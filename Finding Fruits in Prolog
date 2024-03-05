@@ -1,14 +1,8 @@
-father(john, lisa).
-mother(mary, lisa).
-mother(mary, mike).
-father(tom, mary).
-father(mike, emma).
-mother(emma, olivia).
-grandfather(tom, olivia).
-
-sibling(X, Y) :-
-    father(F, X),
-    father(F, Y),
-    mother(M, X),
-    mother(M, Y),
-    X \= Y.
+fruit_color(apple, red).
+fruit_color(banana, yellow).
+fruit_color(grape, purple).
+fruit_color(orange, orange).
+fruit_color(pear, green).
+fruit_color(strawberry, red).
+fruit_color(blueberry, blue).
+fruit_color(watermelon, green).
