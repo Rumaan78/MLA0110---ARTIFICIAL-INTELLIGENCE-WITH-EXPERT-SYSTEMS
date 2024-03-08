@@ -1,9 +1,22 @@
-prolog
-on_box.
 at(monkey, floor).
 at(box, floor).
 at(bananas, ceiling).
-move(monkey, grab, bananas) :- at(monkey, floor), at(bananas, floor), on_box.
-move(monkey, climb, box) :- at(monkey, floor), at(box, floor), \+on_box.
-move(monkey, push, box) :- at(monkey, floor), \+at(bananas, floor), \+on_box.
-move(monkey, stand, box) :- at(monkey, floor), at(box, floor), \+on_box.
+go(floor, ceiling).
+go(ceiling, floor).
+push(box, floor).
+reachable(bananas) :-
+    at(monkey, floor),
+    at(box, floor),
+    at(bananas, ceiling),
+    go(floor, ceiling),
+    push(box, floor).
+reachable(box) :-
+    at(monkey, floor),
+    at(box, ceiling),
+    go(ceiling, floor).
+move(Action) :-
+    reachable(bananas),
+    Action = 'Get the bananas by standing on the box.'.
+move(Action) :-
+    reachable(box),
+    Action = 'Push the box to the monkey.'.
